@@ -10,7 +10,24 @@ namespace PrintFramerAPI.Controllers
     [ApiController]
     public class PriceFrameController : ControllerBase
     {
+
+        /// <summary>
+        /// Returns the price of a frame based on its dimensions.
+        /// </summary>
+        /// <param name="Height">The height of the frame.</param>
+        /// <param name="Width">The width of the frame.</param>
+        /// <returns>The price, in dollars, of the picture frame.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/priceframe/5/10
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the cost of the frame in dollars.</response>
+        /// <response code="400">If the amount of frame material needed is less than 20 inches or greater than 1000 inches.</response>
         [HttpGet("{Height}/{Width}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         public string GetPrice(string Height, string Width)
         {
             string result;
